@@ -5,14 +5,29 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Nosotros - Milodón Coffee Roasters</title>
+    
+    <!-- DNS Prefetch y Preconnect para recursos externos -->
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net" />
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com" />
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    
     <!-- Bootstrap 5 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
     <!-- CSS Personalizado -->
     <link rel="stylesheet" href="../css/main.css" />
+    
+    <!-- Fuentes con display=swap para mejor rendimiento -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet" /></noscript>
+    
+    <!-- Font Awesome con defer -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" media="print" onload="this.media='all'" />
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" /></noscript>
 </head>
 <body>
     <!-- Header -->
@@ -33,20 +48,26 @@
                 </div>
 
                 <div class="container-user">
-                    <i class="fa-solid fa-user"></i>
-                    <i class="fa-solid fa-basket-shopping"></i>
-                    <div class="content-shopping-cart">
-                        <span class="text">Carro</span>
-                        <span class="number">(0)</span>
-                    </div>
+                    <a href="#" aria-label="Acceder a mi cuenta">
+                        <i class="fa-solid fa-user" aria-hidden="true"></i>
+                    </a>
+                    <a href="#" class="shopping-cart-link" aria-label="Ver carrito de compras (0 items)">
+                        <i class="fa-solid fa-basket-shopping" aria-hidden="true"></i>
+                        <div class="content-shopping-cart">
+                            <span class="text">Carro</span>
+                            <span class="number" id="cart-item-count">(0)</span>
+                        </div>
+                    </a>
                 </div>
             </div>
         </div>
 
         <div class="container-navbar">
             <nav class="navbar container">
-                <i class="fa-solid fa-bars"></i>
-                <ul class="menu">
+                <button class="navbar-toggle" aria-label="Abrir menú de navegación" aria-controls="menu-principal" aria-expanded="false">
+                    <i class="fa-solid fa-bars" aria-hidden="true"></i>
+                </button>
+                <ul class="menu" id="menu-principal" role="menubar">
                     <li><a href="../index.html">Inicio</a></li>
                     <li><a href="about.html">Nosotros</a></li>
                     <li><a href="#">Tostaduría</a></li>
@@ -56,10 +77,11 @@
                     <li><a href="contact.html">Contacto</a></li>
                 </ul>
 
-                <form class="search-form">
-                    <input type="search" placeholder="Buscar café..." />
-                    <button class="btn-search">
-                        <i class="fa-solid fa-magnifying-glass"></i>
+                <form class="search-form" role="search">
+                    <label for="search-input-about" class="visually-hidden">Buscar café</label>
+                    <input type="search" id="search-input-about" placeholder="Buscar café..." />
+                    <button class="btn-search" type="submit" aria-label="Buscar">
+                        <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
                     </button>
                 </form>
             </nav>
@@ -69,7 +91,7 @@
     <!-- Banner de Página -->
     <section class="banner-interno">
         <div class="content-banner">
-            <h1>Sobre Nosotros</h1>
+            <h2>Sobre Nosotros</h2>
             <p>Conoce nuestra historia y pasión por el café</p>
         </div>
     </section>
@@ -108,7 +130,7 @@
                 </div>
                 <div class="col-lg-6">
                     <div class="imagen-historia">
-                        <img src="../img/coffee-business-concept-closeup-lady-barista-en-delantal-preparando-y-vertiendo-leche-en-una-taza-caliente-mientras-esta-de-pie-en-el-cafe.jpg" alt="Nuestra tostaduría" class="img-fluid rounded" loading="lazy">
+                        <img src="../img/coffee-business-concept-closeup-lady-barista-en-delantal-preparando-y-vertiendo-leche-en-una-taza-caliente-mientras-esta-de-pie-en-el-cafe.jpg" alt="Nuestra tostaduría" class="img-fluid rounded" loading="lazy" decoding="async">
                     </div>
                 </div>
             </div>
@@ -176,7 +198,7 @@
             <div class="row">
                 <div class="col-md-4">
                     <div class="card-miembro text-center">
-                        <img src="../img/barista-en-la-marca-de-la-cara-en-la-cafeteria-en-new-normal.jpg" alt="Fundador" class="img-fluid rounded-circle">
+                        <img src="../img/barista-en-la-marca-de-la-cara-en-la-cafeteria-en-new-normal.jpg" alt="Fundador" class="img-fluid rounded-circle" loading="lazy" decoding="async">
                         <h4>Sebastián Muñoz Rivera</h4>
                         <p class="cargo">Fundador & Tostador Maestro</p>
                         <p>+10 años de experiencia en café de especialidad</p>
@@ -184,7 +206,7 @@
                 </div>
                 <div class="col-md-4">
                     <div class="card-miembro text-center">
-                        <img src="../img/coffee-business-concept-closeup-lady-barista-en-delantal-preparando-y-vertiendo-leche-en-una-taza-caliente-mientras-esta-de-pie-en-el-cafe.jpg" alt="Barista" class="img-fluid rounded-circle">
+                        <img src="../img/coffee-business-concept-closeup-lady-barista-en-delantal-preparando-y-vertiendo-leche-en-una-taza-caliente-mientras-esta-de-pie-en-el-cafe.jpg" alt="Barista" class="img-fluid rounded-circle" loading="lazy" decoding="async">
                         <h4>Ma José Astudillo</h4>
                         <p class="cargo">Barista Principal</p>
                         <p>Campeona regional de barismo 2022</p>
@@ -192,7 +214,7 @@
                 </div>
                 <div class="col-md-4">
                     <div class="card-miembro text-center">
-                        <img src="../img/MVIMG_20251101_134128.jpg" alt="Gerente" class="img-fluid rounded-circle">
+                        <img src="../img/MVIMG_20251101_134128.jpg" alt="Gerente" class="img-fluid rounded-circle" loading="lazy" decoding="async">
                         <h4>Don Miauricio y Salem</h4>
                         <p class="cargo">Gerente de Operaciones Gato Goldo y Salem</p>
                         <p>Especialista en eventos, comida y catering</p>
@@ -207,7 +229,7 @@
         <div class="container container-footer">
             <div class="menu-footer">
                 <div class="contact-info">
-                    <p class="title-footer">Información de Contacto</p>
+                    <h4 class="title-footer">Información de Contacto</h4>
                     <ul>
                         <li>Dirección: Av. Libertad 123, Viña del Mar, Chile</li>
                         <li>Teléfono: +56 9 1234 5678</li>
@@ -215,15 +237,15 @@
                         <li>Horario: Lunes a Sábado 8:00 - 20:00</li>
                     </ul>
                     <div class="social-icons">
-                        <span class="facebook"><i class="fa-brands fa-facebook-f"></i></span>
-                        <span class="twitter"><i class="fa-brands fa-twitter"></i></span>
-                        <span class="youtube"><i class="fa-brands fa-youtube"></i></span>
-                        <span class="instagram"><i class="fa-brands fa-instagram"></i></span>
+                        <a href="#" class="facebook" aria-label="Facebook"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a>
+                        <a href="#" class="twitter" aria-label="Twitter"><i class="fa-brands fa-twitter" aria-hidden="true"></i></a>
+                        <a href="#" class="youtube" aria-label="YouTube"><i class="fa-brands fa-youtube" aria-hidden="true"></i></a>
+                        <a href="#" class="instagram" aria-label="Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
                     </div>
                 </div>
 
                 <div class="information">
-                    <p class="title-footer">Información</p>
+                    <h4 class="title-footer">Información</h4>
                     <ul>
                         <li><a href="about.html">Acerca de Nosotros</a></li>
                         <li><a href="#">Información de Delivery</a></li>
@@ -234,7 +256,7 @@
                 </div>
 
                 <div class="my-account">
-                    <p class="title-footer">Mi cuenta</p>
+                    <h4 class="title-footer">Mi cuenta</h4>
                     <ul>
                         <li><a href="#">Mi cuenta</a></li>
                         <li><a href="#">Historial de órdenes</a></li>
@@ -245,12 +267,13 @@
                 </div>
 
                 <div class="newsletter">
-                    <p class="title-footer">Boletín informativo</p>
-                    <div class="content">
+                    <h4 class="title-footer">Boletín informativo</h4>
+                    <form class="content" action="#" method="post">
                         <p>Suscríbete a nuestros boletines ahora y mantente al día con nuevas colecciones y ofertas exclusivas.</p>
-                        <input type="email" placeholder="Ingresa el correo aquí...">
-                        <button>Suscríbete</button>
-                    </div>
+                        <label for="newsletter-email-about" class="visually-hidden">Ingresa tu correo aquí...</label>
+                        <input type="email" id="newsletter-email-about" placeholder="Ingresa tu correo aquí..." required>
+                        <button type="submit">Suscríbete</button>
+                    </form>
                 </div>
             </div>
 
@@ -262,6 +285,22 @@
     </footer>
 
     <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" defer></script>
+    
+    <script defer>
+        // Menú móvil toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const navbarToggle = document.querySelector('.navbar-toggle');
+            const menu = document.querySelector('.menu');
+            
+            if (navbarToggle && menu) {
+                navbarToggle.addEventListener('click', function() {
+                    const isExpanded = this.getAttribute('aria-expanded') === 'true';
+                    this.setAttribute('aria-expanded', !isExpanded);
+                    menu.classList.toggle('active');
+                });
+            }
+        });
+    </script>
 </body>
 </html>
