@@ -1,0 +1,857 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+@use "sass:color"; // <-- AÑADE ESTA LÍNEA AL INICIO
+
+// ============ Componentes Reutilizables ============
+
+// Botones y enlaces con estilo
+.btn-read-more {
+  display: inline-block;
+  padding: 1.2rem 3rem;
+  background: $accent-color;
+  color: $light-color;
+  text-transform: uppercase;
+  font-size: 1.3rem;
+  font-weight: 600;
+  border-radius: 3rem;
+  transition: $transition;
+  text-decoration: none;
+  cursor: pointer;
+  
+  &:hover {
+    background: $primary-color;
+    transform: translateY(-2px);
+  }
+}
+
+.btn-enviar {
+  background: $accent-color;
+  color: $light-color;
+  border: none;
+  padding: 1.5rem 3rem;
+  border-radius: $border-radius;
+  font-weight: 600;
+  cursor: pointer;
+  transition: $transition;
+  width: 100%;
+  font-size: 1.6rem;
+  text-transform: uppercase;
+  margin-top: 1rem;
+  
+  &:hover {
+    background: $primary-color;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(139, 69, 19, 0.3);
+  }
+}
+
+.btn-leer-mas {
+  display: inline-block;
+  padding: 1.2rem 3rem;
+  background: $accent-color;
+  color: $light-color;
+  text-decoration: none;
+  border-radius: 3rem;
+  font-weight: 600;
+  font-size: 1.4rem;
+  transition: $transition;
+  text-transform: uppercase;
+  
+  &:hover {
+    background: $primary-color;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  }
+}
+
+// Tarjeta de producto
+.card-product {
+  background-color: $light-color;
+  padding: 2rem;
+  border-radius: $border-radius;
+  box-shadow: $box-shadow;
+  transition: $transition;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(139, 69, 19, 0.1);
+  will-change: transform;
+  
+  &:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+  }
+}
+
+.container-img {
+  position: relative;
+  overflow: hidden;
+  border-radius: $border-radius;
+  margin-bottom: 1.5rem;
+  z-index: 10;
+}
+
+.container-img img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  transition: $transition;
+  will-change: transform;
+}
+
+.card-product:hover .container-img img {
+  transform: scale(1.1);
+}
+
+.container-img .discount {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  background-color: $accent-color;
+  color: $light-color;
+  padding: 0.5rem 1.5rem;
+  border-radius: 2rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  z-index: 2;
+}
+
+.container-img .badge {
+  z-index: 2;
+}
+
+// FIX MEJORADO PARA HOVER DE VISTA RÁPIDA
+.card-product {
+  position: relative;
+  
+  &:hover .button-group {
+    right: 1rem;
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+.button-group {
+  position: absolute;
+  top: 1rem;
+  right: -100%;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  pointer-events: auto;
+}
+
+.button-group:hover {
+  right: 1rem;
+  opacity: 1;
+  visibility: visible;
+}
+
+.button-group button {
+  pointer-events: auto;
+  width: 4rem;
+  height: 4rem;
+  border: 2px solid $accent-color;
+  background: $light-color;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: $transition;
+  padding: 0;
+  
+  &:hover {
+    background-color: $accent-color;
+  }
+}
+
+.button-group button i {
+  font-size: 1.6rem;
+  color: $accent-color;
+  transition: $transition;
+}
+
+.button-group button:hover i {
+  color: $light-color;
+}
+
+.content-card-product {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-rows: repeat(3, auto);
+  gap: 1rem;
+  align-items: center;
+}
+
+.stars {
+  grid-column: 1 / -1;
+  display: flex;
+  gap: 0.3rem;
+}
+
+.stars i {
+  font-size: 1.4rem;
+  color: $accent-color;
+}
+
+.content-card-product h3 {
+  grid-column: 1 / -1;
+  margin: 0;
+}
+
+.content-card-product h3 a {
+  font-weight: 600;
+  font-size: 1.7rem;
+  color: $text-dark;
+  transition: $transition;
+  text-decoration: none;
+  
+  &:hover {
+    color: $accent-color;
+  }
+}
+
+.add-cart {
+  width: 4.5rem;
+  height: 4.5rem;
+  border: 2px solid $accent-color;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: $transition;
+  background: none;
+  padding: 0;
+  
+  &:hover {
+    background-color: $accent-color;
+  }
+}
+
+.add-cart i {
+  font-size: 1.8rem;
+  color: $accent-color;
+  transition: $transition;
+}
+
+.add-cart:hover i {
+  color: $light-color;
+}
+
+.content-card-product .price {
+  font-size: 1.9rem;
+  font-weight: 700;
+  color: $primary-color;
+  text-align: right;
+}
+
+.content-card-product .price s {
+  font-size: 1.5rem;
+  font-weight: 500;
+  text-decoration: line-through;
+  color: $text-light;
+  margin-left: 0.5rem;
+}
+
+// Tarjeta de blog
+.card-blog {
+  background: $light-color;
+  border-radius: $border-radius;
+  overflow: hidden;
+  box-shadow: $box-shadow;
+  transition: $transition;
+  border: 1px solid rgba(139, 69, 19, 0.1);
+  will-change: transform;
+  
+  &:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+  }
+}
+
+.card-blog .container-img {
+  height: 25rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.card-blog .container-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: $transition;
+}
+
+.card-blog:hover .container-img img {
+  transform: scale(1.1);
+}
+
+.button-group-blog {
+  position: absolute;
+  bottom: 2rem;
+  right: -100%;
+  display: flex;
+  gap: 1rem;
+  transition: $transition;
+}
+
+.card-blog:hover .button-group-blog {
+  right: 2rem;
+}
+
+.button-group-blog a {
+  width: 4.5rem;
+  height: 4.5rem;
+  background: $light-color;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: $transition;
+  text-decoration: none;
+  
+  &:hover {
+    background: $accent-color;
+  }
+}
+
+.button-group-blog a i {
+  font-size: 1.6rem;
+  color: $text-dark;
+  transition: $transition;
+}
+
+.button-group-blog a:hover i {
+  color: $light-color;
+}
+
+.content-blog {
+  padding: 2.5rem;
+}
+
+.content-blog h3 {
+  margin: 0 0 1rem 0;
+}
+
+.content-blog h3 a {
+  font-size: 2.2rem;
+  font-weight: 600;
+  color: $primary-color;
+  transition: $transition;
+  cursor: pointer;
+  line-height: 1.3;
+  text-decoration: none;
+  
+  &:hover {
+    color: $accent-color;
+  }
+}
+
+.content-blog time {
+  color: $accent-color;
+  font-size: 1.4rem;
+  font-weight: 500;
+  display: block;
+  margin-bottom: 1.5rem;
+}
+
+.content-blog p {
+  font-size: 1.5rem;
+  color: $text-light;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+#quickViewModal {
+  position: fixed;
+  z-index: 1055;
+  
+  .modal-dialog {
+    max-width: 900px;
+    margin: 1.75rem auto;
+    
+    @include tablet {
+      margin: 1rem;
+      max-width: calc(100% - 2rem);
+    }
+    
+    @include phone {
+      margin: 0.5rem;
+      max-width: calc(100% - 1rem);
+    }
+  }
+  
+  .modal-content {
+    border-radius: $border-radius;
+    border: none;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .modal-header {
+    background: linear-gradient(135deg, $primary-color 0%, $secondary-color 100%);
+    color: $light-color;
+    border-bottom: none;
+    border-radius: $border-radius $border-radius 0 0;
+    flex-shrink: 0;
+    padding: 1.5rem;
+    
+    .btn-close {
+      filter: invert(1);
+      opacity: 1;
+    }
+  }
+  
+  .modal-body {
+    padding: 2rem;
+    overflow-y: auto;
+    flex: 1 1 auto;
+    max-height: calc(100vh - 250px);
+    
+    @include tablet {
+      padding: 1.5rem;
+      max-height: calc(100vh - 180px);
+    }
+  }
+  
+  .btn-primary {
+    background: linear-gradient(135deg, $accent-color 0%, $secondary-color 100%);
+    border: none;
+    padding: 1rem;
+    font-weight: 600;
+    transition: $transition;
+    
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+  }
+  
+  .input-group button {
+    border-color: $accent-color;
+    color: $accent-color;
+    
+    &:hover {
+      background-color: $accent-color;
+      color: $light-color;
+    }
+  }
+  
+  #product-qty {
+    border-color: $accent-color;
+    font-weight: 600;
+  }
+}
+
+// ======================================
+// ESTILOS PARA OFFCANVAS DEL CARRITO
+// ======================================
+
+#cartOffcanvas {
+  width: 400px;
+  max-width: 90vw;
+  
+  .offcanvas-header {
+    background: linear-gradient(135deg, $primary-color 0%, $secondary-color 100%);
+    color: $light-color;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+    
+    .btn-close {
+      filter: invert(1);
+      opacity: 1;
+    }
+  }
+  
+  .offcanvas-body {
+    padding: 1.5rem;
+    overflow-y: auto;
+    max-height: calc(100vh - 200px);
+  }
+  
+  .offcanvas-footer {
+    background-color: $background-color;
+    border-top: 2px solid rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+    
+    .btn-primary {
+      background: linear-gradient(135deg, $accent-color 0%, $secondary-color 100%);
+      border: none;
+      font-weight: 600;
+      transition: $transition;
+      
+      &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      }
+    }
+  }
+  
+  .btn-danger {
+    background-color: $accent-color;
+    border: none;
+    
+    &:hover {
+      // SOLUCIÓN CORREGIDA - sin darken()
+      background-color: color.adjust($accent-color, $lightness: -10%);
+    }
+  }
+}
+
+// ======================================
+// ESTILOS PARA TOAST
+// ======================================
+
+.toast-container {
+  z-index: 1090;
+}
+
+.toast {
+  border-radius: $border-radius;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+  border: none;
+}
+
+.toast-header {
+  border-bottom: none;
+  border-radius: $border-radius $border-radius 0 0;
+}
+
+.toast-body {
+  padding: 1rem 1.5rem;
+  font-weight: 500;
+}
+
+// ======================================
+// ESTILOS PARA BADGES PERSONALIZADOS
+// ======================================
+
+.shopping-cart-link {
+  position: relative;
+}
+
+#cart-badge {
+  font-size: 0.75rem;
+  padding: 0.25rem 0.5rem;
+  min-width: 1.5rem;
+  text-align: center;
+}
+
+.card-product .badge {
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  border-radius: $border-radius;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  z-index: 3;
+}
+
+// Badges con colores personalizados
+.card-product .badge.bg-danger {
+  background-color: $accent-color !important;
+}
+
+.card-product .badge.bg-success {
+  background-color: $success-color !important;
+}
+
+.card-product .badge.bg-warning {
+  background-color: #FFD700 !important;
+}
+
+.card-product .badge.bg-primary {
+  background-color: $primary-color !important;
+}
+
+.card-product .badge.bg-info {
+  background-color: #17a2b8 !important;
+}
+
+// ================================
+// Sobre Nosotros / Equipo styles
+// ================================
+
+.sobre-nosotros {
+  .datos-empresa {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, $accent-color 0%, $secondary-color 100%);
+    color: $light-color;
+    padding: 1.6rem 1rem;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+
+    .dato-item {
+      text-align: center;
+
+      h3 {
+        font-size: 2.4rem;
+        margin: 0;
+        font-weight: 700;
+        color: $light-color;
+      }
+
+      p {
+        margin: 0;
+        color: rgba($light-color, 0.95);
+        font-weight: 500;
+      }
+    }
+
+    @include tablet {
+      flex-direction: column;
+      gap: 1rem;
+    }
+  }
+
+  .imagen-historia {
+    img {
+      border-radius: 16px;
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+    }
+  }
+}
+
+// Equipo: uniformar tamaño de las imágenes en móvil y mantener crop con object-fit
+.equipo {
+  .card-miembro {
+    img {
+      display: block;
+      margin: 0 auto 1rem auto;
+      width: 160px;
+      height: 160px;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+
+    h4 {
+      margin-top: 0.5rem;
+      margin-bottom: 0.25rem;
+    }
+  }
+
+  @include tablet {
+    .card-miembro img {
+      width: 120px;
+      height: 120px;
+    }
+  }
+}
+
+// Misión / Visión: cards contrastantes
+.card-mision,
+.card-vision {
+  padding: 2.2rem;
+  border-radius: $border-radius;
+  color: $light-color;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+
+  i {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    display: block;
+  }
+
+  h3 {
+    margin-bottom: 0.75rem;
+    font-weight: 700;
+  }
+
+  p { color: rgba($light-color, 0.95); }
+}
+
+.card-mision {
+  background: linear-gradient(135deg, $accent-color 0%, color.adjust($accent-color, $lightness: -6%) 100%);
+}
+
+.card-vision {
+  // Usar mismo fondo que la misión para contraste consistente
+  background: linear-gradient(135deg, $accent-color 0%, color.adjust($accent-color, $lightness: -6%) 100%);
+}
+
+// ================================
+// Uniform card sizes and text for values and team
+// ================================
+
+// Cards de valores (Nuestros Valores)
+.card-valor {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 2rem;
+  min-height: 320px; // keep cards visually equal
+  border-radius: $border-radius;
+  background: $light-color;
+  box-shadow: $box-shadow;
+}
+
+.card-valor i {
+  font-size: 3rem;
+  color: $accent-color;
+  margin-bottom: 0.8rem;
+}
+
+.card-valor h4 {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+}
+
+.card-valor p {
+  font-size: 1.4rem;
+  color: $text-light;
+}
+
+// Equipo: asegurar que títulos y párrafos tengan tamaños iguales y tarjetas alineadas
+.card-miembro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 1.8rem 1.4rem;
+  min-height: 360px; // equal height for uniform layout
+  justify-content: flex-start;
+}
+
+.card-miembro img {
+  flex: 0 0 auto;
+}
+
+.card-miembro h4 {
+  font-size: 1.8rem;
+  margin: 0.8rem 0 0.25rem 0;
+  line-height: 1.2;
+}
+
+.card-miembro .cargo {
+  font-size: 1.4rem;
+  color: $accent-color;
+  font-weight: 600;
+  margin-bottom: 0.6rem;
+}
+
+.card-miembro p {
+  font-size: 1.4rem;
+  color: $text-light;
+  margin-bottom: 0;
+}
+
+@include tablet {
+  .card-valor, .card-miembro {
+    min-height: auto;
+    padding: 1.6rem;
+  }
+
+  .card-miembro h4 {
+    font-size: 1.6rem;
+  }
+
+  .card-miembro .cargo,
+  .card-valor h4 {
+    font-size: 1.4rem;
+  }
+}
+
+/* From Uiverse.io by M4rco592 - Gradient animated CTA */
+.gradient-button {
+  position: relative;
+  padding: 1.6rem 3.2rem;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: $light-color;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  border-radius: 50px;
+  overflow: hidden;
+  transition: transform 0.2s ease;
+  display: inline-block;
+  text-decoration: none;
+}
+
+.gradient-button:hover {
+  transform: scale(1.03);
+}
+
+.gradient-button::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: conic-gradient(
+    from 0deg,
+    #ff6b6b,
+    #4ecdc4,
+    #45b7d1,
+    #96ceb4,
+    #feca57,
+    #ff9ff3,
+    #ff6b6b
+  );
+  z-index: -2;
+  filter: blur(10px);
+  transform: rotate(0deg);
+  transition: transform 1.5s ease-in-out;
+}
+
+.gradient-button:hover::before {
+  transform: rotate(180deg);
+}
+
+.gradient-button::after {
+  content: "";
+  position: absolute;
+  inset: 3px;
+  background: rgba(0,0,0,0.6);
+  border-radius: 47px;
+  z-index: -1;
+  filter: blur(5px);
+}
+
+.gradient-text {
+  color: transparent;
+  background: conic-gradient(
+    from 0deg,
+    #ff6b6b,
+    #4ecdc4,
+    #45b7d1,
+    #96ceb4,
+    #feca57,
+    #ff9ff3,
+    #ff6b6b
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  filter: hue-rotate(0deg);
+  display: inline-block;
+}
+
+.gradient-button:hover .gradient-text {
+  animation: hue-rotating 2s linear infinite;
+}
+
+.gradient-button:active {
+  transform: scale(0.99);
+}
+
+@keyframes hue-rotating {
+  to {
+    filter: hue-rotate(360deg);
+  }
+}
+
