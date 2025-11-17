@@ -583,8 +583,8 @@
     gap: 1.5rem;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, $accent-color 0%, $secondary-color 100%);
-    color: $light-color;
+    background: transparent; 
+    color: $text-light; 
     padding: 1.6rem 1rem;
     border-radius: 12px;
     box-shadow: 0 8px 25px rgba(0,0,0,0.08);
@@ -596,12 +596,12 @@
         font-size: 2.4rem;
         margin: 0;
         font-weight: 700;
-        color: $light-color;
+        color: $text-light;
       }
 
       p {
         margin: 0;
-        color: rgba($light-color, 0.95);
+        color: $text-light;
         font-weight: 500;
       }
     }
@@ -623,7 +623,7 @@
   }
 }
 
-// Equipo: uniformar tamaño de las imágenes en móvil y mantener crop con object-fit
+
 .equipo {
   .card-miembro {
     img {
@@ -649,7 +649,51 @@
   }
 }
 
-// Misión / Visión: cards contrastantes
+// Tarjetas de estadisticas (clientes, eventos, años)
+.stat-card {
+  background: $secondary-color;
+  border-radius: $border-radius;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+  border: 1px solid rgba(63,47,36,0.04);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.stat-card .stat-number {
+  font-size: 3.6rem;
+  font-weight: 800;
+  color: $primary-color;
+  margin-bottom: 0.5rem;
+}
+
+.stat-card .stat-label {
+  font-size: 1.4rem;
+  color: $text-light;
+  font-weight: 600;
+  margin: 0;
+}
+
+@include tablet {
+  .stat-card {
+    padding: 2.4rem !important;
+  }
+  .stat-card .stat-number {
+    font-size: 3.2rem;
+  }
+}
+
+@include phone {
+  .stat-card {
+    padding: 2rem !important;
+  }
+  .stat-card .stat-number {
+    font-size: 2.8rem;
+  }
+}
+
+// Misión y  Visión: cards contrastantes
 .card-mision,
 .card-vision {
   padding: 2.2rem;
@@ -671,14 +715,48 @@
 
   p { color: rgba($light-color, 0.95); }
 }
-
 .card-mision {
   background: linear-gradient(135deg, $accent-color 0%, color.adjust($accent-color, $lightness: -6%) 100%);
 }
 
 .card-vision {
-  // Usar mismo fondo que la misión para contraste consistente
   background: linear-gradient(135deg, $accent-color 0%, color.adjust($accent-color, $lightness: -6%) 100%);
+}
+@include tablet {
+  .card-mision, .card-vision {
+    padding: 1.8rem;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+}
+@include phone {
+  .card-mision, .card-vision {
+    padding: 1.6rem;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+} 
+
+
+.sobre-nosotros .stat-card,
+.datos-empresa .stat-card,
+.sobre-nosotros .stats-row .stat-card {
+  background: linear-gradient(135deg, $accent-color 0%, color.adjust($accent-color, $lightness: -6%) 100%);
+  color: $light-color;
+  border: none;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  min-height: 18rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.sobre-nosotros .stat-number,
+.sobre-nosotros .stat-label,
+.datos-empresa .stat-number,
+.datos-empresa .stat-label {
+  color: $light-color;
 }
 
 // Cards de valores (Nuestros Valores)
@@ -787,15 +865,15 @@
   left: -50%;
   width: 200%;
   height: 200%;
+  /* Usar la paleta definida en _variables.scss para el gradiente copiado desde la pagina original del efecto */
   background: conic-gradient(
     from 0deg,
-    #ff6b6b,
-    #4ecdc4,
-    #45b7d1,
-    #96ceb4,
-    #feca57,
-    #ff9ff3,
-    #ff6b6b
+    $accent-color,
+    $accent-light,
+    $secondary-color,
+    $primary-color,
+    color.adjust($accent-color, $lightness: 8%),
+    $accent-color
   );
   z-index: -2;
   filter: blur(10px);
@@ -819,15 +897,15 @@
 
 .gradient-text {
   color: transparent;
+  /* Texto con gradiente usando la paleta */
   background: conic-gradient(
     from 0deg,
-    #ff6b6b,
-    #4ecdc4,
-    #45b7d1,
-    #96ceb4,
-    #feca57,
-    #ff9ff3,
-    #ff6b6b
+    $accent-color,
+    $accent-light,
+    $secondary-color,
+    $primary-color,
+    color.adjust($accent-color, $lightness: 8%),
+    $accent-color
   );
   -webkit-background-clip: text;
   background-clip: text;
@@ -846,6 +924,63 @@
 @keyframes hue-rotating {
   to {
     filter: hue-rotate(360deg);
+  }
+}
+
+// Estadísticas - 3 cards independientes
+.stats-cards {
+  padding: 4rem 0;
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    align-items: stretch;
+    max-width: 120rem;
+    margin: 0 auto;
+  }
+
+  .stat-card {
+    background: linear-gradient(135deg, $accent-color 0%, color.adjust($accent-color, $lightness: -6%) 100%);
+    color: $light-color;
+    padding: 2.4rem 2rem;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    min-height: 18rem; // asegurar tamaño consistente entre las 3 cards
+    border: none;
+  }
+
+  .stat-number {
+    font-size: 3.6rem;
+    font-weight: 800;
+    color: $light-color;
+    margin-bottom: 0.6rem;
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: "tnum" 1;
+  }
+
+  .stat-label {
+    font-size: 1.6rem;
+    color: rgba($light-color, 0.95);
+    font-weight: 600;
+    text-transform: none;
+  }
+
+  @include tablet {
+    .stats-grid { grid-template-columns: 1fr; gap: 1.6rem; }
+    .stat-number { font-size: 3.2rem; }
+  }
+
+  @include phone {
+    .stats-grid { grid-template-columns: 1fr; gap: 1.2rem; }
+    .stat-number { font-size: 2.8rem; }
+    .stat-card { padding: 1.6rem 1.2rem; }
   }
 }
 

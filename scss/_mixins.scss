@@ -1,4 +1,4 @@
-// Mixins para media queries 
+// Mixins para media queries o MQ 
 @mixin phone {
   @media (max-width: 576px) {
     @content;

@@ -1,24 +1,17 @@
 {
-  "name": "entrega3-sebastian-munoz-milodon-coffee-roasters-1",
+  "name": "milodon-coffee-roasters",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "E-commerce de café de especialidad",
+  "main": "index.html",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "scss:watch": "sass --watch scss:css",
+    "scss:build": "sass scss:css --style compressed",
+    "dev": "sass --watch scss:css & python -m http.server 8000"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/sebakine/entrega3-sebastian-munoz-milodon-coffee-roasters.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "commonjs",
-  "bugs": {
-    "url": "https://github.com/sebakine/entrega3-sebastian-munoz-milodon-coffee-roasters/issues"
-  },
-  "homepage": "https://github.com/sebakine/entrega3-sebastian-munoz-milodon-coffee-roasters#readme",
   "devDependencies": {
-    "sass": "^1.94.0"
-  }
+    "sass": "^1.66.1"
+  },
+  "keywords": ["cafe", "ecommerce", "bootstrap", "sass"],
+  "author": "sebakine",
+  "license": "MIT"
 }

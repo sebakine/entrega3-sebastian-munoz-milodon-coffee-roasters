@@ -88,7 +88,7 @@
         </div>
     </header>
 
-    <!-- Banner de Página -->
+    <!-- Banner de la pagina -->
     <section class="banner-interno">
         <div class="content-banner">
             <h2>Sobre Nosotros</h2>
@@ -114,17 +114,25 @@
                         y nuestra búsqueda de sabores auténticos y perdurables.
                     </p>
                     <div class="datos-empresa mt-4">
-                        <div class="dato-item">
-                            <h3>5000+</h3>
-                            <p>Clientes Satisfechos</p>
-                        </div>
-                        <div class="dato-item">
-                            <h3>50+</h3>
-                            <p>Eventos Realizados</p>
-                        </div>
-                        <div class="dato-item">
-                            <h3>3</h3>
-                            <p>Años de Experiencia</p>
+                        <div class="row g-3 stats-row">
+                            <div class="col-12 col-md-4">
+                                <div class="stat-card text-center p-4">
+                                    <div class="stat-number">5000+</div>
+                                    <div class="stat-label">Clientes Satisfechos</div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-4">
+                                <div class="stat-card text-center p-4">
+                                    <div class="stat-number">50+</div>
+                                    <div class="stat-label">Eventos Realizados</div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-4">
+                                <div class="stat-card text-center p-4">
+                                    <div class="stat-number">3</div>
+                                    <div class="stat-label">Años de Experiencia</div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -290,7 +298,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     
     <script>
-        // Menú móvil toggle y funcionalidad compartida (igual que index)
+        // Menú móvil toggle y funcionalidad compartida
         document.addEventListener('DOMContentLoaded', function() {
             console.log('DOM cargado - inicializando scripts (pages)');
             
@@ -305,16 +313,16 @@
                 });
             }
             
-            // Tabs functionality (si existe)
+            
             const tabButtons = document.querySelectorAll('.container-options button[role="tab"]');
             tabButtons.forEach(button => {
                 button.addEventListener('click', function() {
-                    // Remove active class from all buttons
+                    
                     tabButtons.forEach(btn => {
                         btn.classList.remove('active');
                         btn.setAttribute('aria-selected', 'false');
                     });
-                    // Add active class to clicked button
+                    
                     this.classList.add('active');
                     this.setAttribute('aria-selected', 'true');
                 });

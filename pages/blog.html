@@ -207,7 +207,7 @@
                 <!-- Sidebar -->
                 <div class="col-lg-4">
                     <div class="sidebar-blog">
-                        <!-- Búsqueda -->
+                        <!-- Búsqueda que deberia quitar en un futuro no tiene sentido no hay cantidad de productos -->
                         <div class="card-sidebar mb-4">
                             <h4>Buscar en el Blog</h4>
                             <form class="form-busqueda">
@@ -351,7 +351,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     
     <script>
-        // Menú móvil toggle y funcionalidad compartida (igual que index)
+        // Menú móvil toggle y funcionalidad compartida
         document.addEventListener('DOMContentLoaded', function() {
             console.log('DOM cargado - inicializando scripts (pages)');
             
@@ -366,16 +366,16 @@
                 });
             }
             
-            // Tabs functionality (si existe)
+            // Tabs functionality 
             const tabButtons = document.querySelectorAll('.container-options button[role="tab"]');
             tabButtons.forEach(button => {
                 button.addEventListener('click', function() {
-                    // Remove active class from all buttons
+                    
                     tabButtons.forEach(btn => {
                         btn.classList.remove('active');
                         btn.setAttribute('aria-selected', 'false');
                     });
-                    // Add active class to clicked button
+                    
                     this.classList.add('active');
                     this.setAttribute('aria-selected', 'true');
                 });

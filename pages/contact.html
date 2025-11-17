@@ -354,7 +354,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     
     <script>
-        // Menú móvil toggle y funcionalidad compartida (igual que index)
+        // Menú móvil toggle y funcionalidad compartida 
         document.addEventListener('DOMContentLoaded', function() {
             console.log('DOM cargado - inicializando scripts (pages)');
             
@@ -369,16 +369,16 @@
                 });
             }
             
-            // Tabs functionality (si existe)
+            // Tabs functionality 
             const tabButtons = document.querySelectorAll('.container-options button[role="tab"]');
             tabButtons.forEach(button => {
                 button.addEventListener('click', function() {
-                    // Remove active class from all buttons
+                    
                     tabButtons.forEach(btn => {
                         btn.classList.remove('active');
                         btn.setAttribute('aria-selected', 'false');
                     });
-                    // Add active class to clicked button
+                    // quizás no lo quieren en inglés pero dejarlo así por ahora
                     this.classList.add('active');
                     this.setAttribute('aria-selected', 'true');
                 });
@@ -410,7 +410,7 @@
                 }
             }
 
-            // Renderizar items del carrito (si existe offcanvas)
+            // Renderizar items del carrito
             function renderCart() {
                 if (!cartItems) return;
                 if (cart.length === 0) {

@@ -63,20 +63,20 @@
 .container-logo .logo-img {
   display: inline-block;
   width: auto;
-  max-height: 6.4rem; // desktop (mayor)
+  max-height: 6rem; // desktop
   object-fit: contain;
   vertical-align: middle;
 }
 
 @include tablet {
   .container-logo .logo-img {
-    max-height: 5.6rem; // tablet (mayor)
+    max-height: 6rem; // tablet 
   }
 }
 
 @include phone {
   .container-logo .logo-img {
-    max-height: 5.0rem; // mobile (mayor)
+    max-height: 7rem; // mobile 
   }
 }
 
@@ -881,21 +881,21 @@
     gap: 1rem;
   }
 
-  /* En tablet queremos el logo a la izquierda y el toggle a la derecha */
+  /* Aumentar el espacio entre el logo y el texto en tablet */
   .container-logo {
     flex-direction: row;
-    text-align: left;
-    justify-content: flex-start;
+    text-align: center;
+    justify-content: center;
     align-items: center;
     gap: 1rem;
   }
 
-  /* Ocultar el texto del logo en tablet: mostrar solo la imagen */
+  /* Ocultar el texto del logo en tablet */
   .container-logo h1 a {
     display: none;
   }
 
-  /* Aumentar logo en tablet y alinearlo a la izquierda */
+  /* Aumentar el tamaño del logo en tablet */
   .container-logo .logo-img {
     max-height: 6.8rem;
   }
@@ -903,6 +903,37 @@
   .content-banner {
     text-align: center;
     padding: 6rem 0;
+  }
+
+  /* Asegurar que el bloque banner y su contenido estén centrados en tablet */
+  .banner {
+    justify-content: center;
+  }
+
+  .content-banner {
+    margin: 0 auto;
+  }
+
+  /* Centrar textos y títulos en tablet */
+  h1, h2, h3, h4, h5, h6 {
+    text-align: center;
+  }
+
+  p,
+  .content-banner,
+  .content-banner p,
+  .content-blog,
+  .content-blog p,
+  .feature-content,
+  .card-feature,
+  .card-product,
+  .card-blog,
+  .container-features,
+  .container-categories,
+  .container-blogs,
+  .container-options,
+  .content {
+    text-align: center;
   }
   
   .content-banner h2 {
@@ -970,6 +1001,15 @@
   .content-banner {
     padding: 4rem 0;
   }
+
+  /* Asegurar que el bloque banner y su contenido estén centrados en móvil */
+  .banner {
+    justify-content: center;
+  }
+
+  .content-banner {
+    margin: 0 auto;
+  }
   
   .menu-footer {
     grid-template-columns: 1fr;
@@ -992,14 +1032,36 @@
   /* En móvil: logo más grande y alineado a la izquierda junto al toggle */
   .container-logo {
     flex-direction: row;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
-    text-align: left;
+    text-align: center;
     gap: 1rem;
   }
 
   .container-logo h1 a {
     display: none;
+  }
+
+  /* Centrar textos y títulos en móvil */
+  h1, h2, h3, h4, h5, h6 {
+    text-align: center;
+  }
+
+  p,
+  .content-banner,
+  .content-banner p,
+  .content-blog,
+  .content-blog p,
+  .feature-content,
+  .card-feature,
+  .card-product,
+  .card-blog,
+  .container-features,
+  .container-categories,
+  .container-blogs,
+  .container-options,
+  .content {
+    text-align: center;
   }
 
   .container-logo .logo-img {

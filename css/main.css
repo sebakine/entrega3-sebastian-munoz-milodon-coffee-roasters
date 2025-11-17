@@ -156,19 +156,19 @@ input:focus-visible {
 .container-logo .logo-img {
   display: inline-block;
   width: auto;
-  max-height: 6.4rem;
+  max-height: 6rem;
   object-fit: contain;
   vertical-align: middle;
 }
 
 @media (max-width: 768px) {
   .container-logo .logo-img {
-    max-height: 5.6rem;
+    max-height: 6rem;
   }
 }
 @media (max-width: 576px) {
   .container-logo .logo-img {
-    max-height: 5rem;
+    max-height: 7rem;
   }
 }
 .container-logo h1 a {
@@ -933,25 +933,52 @@ input:focus-visible {
     justify-content: space-between;
     gap: 1rem;
   }
-  /* En tablet queremos el logo a la izquierda y el toggle a la derecha */
+  /* Aumentar el espacio entre el logo y el texto en tablet */
   .container-logo {
     flex-direction: row;
-    text-align: left;
-    justify-content: flex-start;
+    text-align: center;
+    justify-content: center;
     align-items: center;
     gap: 1rem;
   }
-  /* Ocultar el texto del logo en tablet: mostrar solo la imagen */
+  /* Ocultar el texto del logo en tablet */
   .container-logo h1 a {
     display: none;
   }
-  /* Aumentar logo en tablet y alinearlo a la izquierda */
+  /* Aumentar el tamaño del logo en tablet */
   .container-logo .logo-img {
     max-height: 6.8rem;
   }
   .content-banner {
     text-align: center;
     padding: 6rem 0;
+  }
+  /* Asegurar que el bloque banner y su contenido estén centrados en tablet */
+  .banner {
+    justify-content: center;
+  }
+  .content-banner {
+    margin: 0 auto;
+  }
+  /* Centrar textos y títulos en tablet */
+  h1, h2, h3, h4, h5, h6 {
+    text-align: center;
+  }
+  p,
+  .content-banner,
+  .content-banner p,
+  .content-blog,
+  .content-blog p,
+  .feature-content,
+  .card-feature,
+  .card-product,
+  .card-blog,
+  .container-features,
+  .container-categories,
+  .container-blogs,
+  .container-options,
+  .content {
+    text-align: center;
   }
   .content-banner h2 {
     font-size: 3.2rem;
@@ -1004,6 +1031,13 @@ input:focus-visible {
   .content-banner {
     padding: 4rem 0;
   }
+  /* Asegurar que el bloque banner y su contenido estén centrados en móvil */
+  .banner {
+    justify-content: center;
+  }
+  .content-banner {
+    margin: 0 auto;
+  }
   .menu-footer {
     grid-template-columns: 1fr;
   }
@@ -1022,13 +1056,33 @@ input:focus-visible {
   /* En móvil: logo más grande y alineado a la izquierda junto al toggle */
   .container-logo {
     flex-direction: row;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
-    text-align: left;
+    text-align: center;
     gap: 1rem;
   }
   .container-logo h1 a {
     display: none;
+  }
+  /* Centrar textos y títulos en móvil */
+  h1, h2, h3, h4, h5, h6 {
+    text-align: center;
+  }
+  p,
+  .content-banner,
+  .content-banner p,
+  .content-blog,
+  .content-blog p,
+  .feature-content,
+  .card-feature,
+  .card-product,
+  .card-blog,
+  .container-features,
+  .container-categories,
+  .container-blogs,
+  .container-options,
+  .content {
+    text-align: center;
   }
   .container-logo .logo-img {
     max-height: 6rem;
@@ -1587,8 +1641,8 @@ input:focus-visible {
   gap: 1.5rem;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #FF6B35 0%, #D2691E 100%);
-  color: #FFFFFF;
+  background: transparent;
+  color: #757575;
   padding: 1.6rem 1rem;
   border-radius: 12px;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
@@ -1600,11 +1654,11 @@ input:focus-visible {
   font-size: 2.4rem;
   margin: 0;
   font-weight: 700;
-  color: #FFFFFF;
+  color: #757575;
 }
 .sobre-nosotros .datos-empresa .dato-item p {
   margin: 0;
-  color: rgba(255, 255, 255, 0.95);
+  color: #757575;
   font-weight: 500;
 }
 @media (max-width: 768px) {
@@ -1640,6 +1694,47 @@ input:focus-visible {
   }
 }
 
+.stat-card {
+  background: #D2691E;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(63, 47, 36, 0.04);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.stat-card .stat-number {
+  font-size: 3.6rem;
+  font-weight: 800;
+  color: #3f2f24;
+  margin-bottom: 0.5rem;
+}
+
+.stat-card .stat-label {
+  font-size: 1.4rem;
+  color: #757575;
+  font-weight: 600;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .stat-card {
+    padding: 2.4rem !important;
+  }
+  .stat-card .stat-number {
+    font-size: 3.2rem;
+  }
+}
+@media (max-width: 576px) {
+  .stat-card {
+    padding: 2rem !important;
+  }
+  .stat-card .stat-number {
+    font-size: 2.8rem;
+  }
+}
 .card-mision,
 .card-vision {
   padding: 2.2rem;
@@ -1670,6 +1765,41 @@ input:focus-visible {
 
 .card-vision {
   background: linear-gradient(135deg, #FF6B35 0%, rgb(255, 84.5801980198, 22.4) 100%);
+}
+
+@media (max-width: 768px) {
+  .card-mision, .card-vision {
+    padding: 1.8rem;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+}
+@media (max-width: 576px) {
+  .card-mision, .card-vision {
+    padding: 1.6rem;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+}
+.sobre-nosotros .stat-card,
+.datos-empresa .stat-card,
+.sobre-nosotros .stats-row .stat-card {
+  background: linear-gradient(135deg, #FF6B35 0%, rgb(255, 84.5801980198, 22.4) 100%);
+  color: #FFFFFF;
+  border: none;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  min-height: 18rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.sobre-nosotros .stat-number,
+.sobre-nosotros .stat-label,
+.datos-empresa .stat-number,
+.datos-empresa .stat-label {
+  color: #FFFFFF;
 }
 
 .card-valor {
@@ -1773,7 +1903,8 @@ input:focus-visible {
   left: -50%;
   width: 200%;
   height: 200%;
-  background: conic-gradient(from 0deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #feca57, #ff9ff3, #ff6b6b);
+  /* Usar la paleta definida en _variables.scss para el gradiente copiado desde la pagina original del efecto */
+  background: conic-gradient(from 0deg, #FF6B35, #FFA07A, #D2691E, #3f2f24, rgb(255, 136.8930693069, 93.8), #FF6B35);
   z-index: -2;
   filter: blur(10px);
   transform: rotate(0deg);
@@ -1796,7 +1927,8 @@ input:focus-visible {
 
 .gradient-text {
   color: transparent;
-  background: conic-gradient(from 0deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #feca57, #ff9ff3, #ff6b6b);
+  /* Texto con gradiente usando la paleta */
+  background: conic-gradient(from 0deg, #FF6B35, #FFA07A, #D2691E, #3f2f24, rgb(255, 136.8930693069, 93.8), #FF6B35);
   -webkit-background-clip: text;
   background-clip: text;
   filter: hue-rotate(0deg);
@@ -1814,6 +1946,67 @@ input:focus-visible {
 @keyframes hue-rotating {
   to {
     filter: hue-rotate(360deg);
+  }
+}
+.stats-cards {
+  padding: 4rem 0;
+}
+.stats-cards .stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  align-items: stretch;
+  max-width: 120rem;
+  margin: 0 auto;
+}
+.stats-cards .stat-card {
+  background: linear-gradient(135deg, #FF6B35 0%, rgb(255, 84.5801980198, 22.4) 100%);
+  color: #FFFFFF;
+  padding: 2.4rem 2rem;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  min-height: 18rem;
+  border: none;
+}
+.stats-cards .stat-number {
+  font-size: 3.6rem;
+  font-weight: 800;
+  color: #FFFFFF;
+  margin-bottom: 0.6rem;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum" 1;
+}
+.stats-cards .stat-label {
+  font-size: 1.6rem;
+  color: rgba(255, 255, 255, 0.95);
+  font-weight: 600;
+  text-transform: none;
+}
+@media (max-width: 768px) {
+  .stats-cards .stats-grid {
+    grid-template-columns: 1fr;
+    gap: 1.6rem;
+  }
+  .stats-cards .stat-number {
+    font-size: 3.2rem;
+  }
+}
+@media (max-width: 576px) {
+  .stats-cards .stats-grid {
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+  }
+  .stats-cards .stat-number {
+    font-size: 2.8rem;
+  }
+  .stats-cards .stat-card {
+    padding: 1.6rem 1.2rem;
   }
 }
 
