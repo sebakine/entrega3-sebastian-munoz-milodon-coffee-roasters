@@ -1,7 +1,7 @@
 @use 'variables' as *;
 @use 'mixins' as *;
 
-// ============ Encabezado (Header) ============
+// Header
 .header-elegante {
   background: $background-color;
   box-shadow: 0 2px 15px rgba(0,0,0,0.1);
@@ -59,6 +59,27 @@
   color: $light-color;
 }
 
+/* Logo con respoinsive  */
+.container-logo .logo-img {
+  display: inline-block;
+  width: auto;
+  max-height: 6.4rem; // desktop (mayor)
+  object-fit: contain;
+  vertical-align: middle;
+}
+
+@include tablet {
+  .container-logo .logo-img {
+    max-height: 5.6rem; // tablet (mayor)
+  }
+}
+
+@include phone {
+  .container-logo .logo-img {
+    max-height: 5.0rem; // mobile (mayor)
+  }
+}
+
 .container-logo h1 a {
   text-decoration: none;
   color: $light-color;
@@ -84,6 +105,51 @@
 .container-user a:hover {
   color: $accent-light;
   transform: scale(1.1);
+}
+
+
+.shopping-cart-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  position: relative;
+  color: $light-color;
+  text-decoration: none;
+}
+
+.shopping-cart-link .content-shopping-cart {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.4rem;
+  margin: 0;
+}
+
+.shopping-cart-link .content-shopping-cart .text {
+  display: none; 
+}
+
+.shopping-cart-link .content-shopping-cart .number {
+  display: inline-block;
+  min-width: 2.2rem;
+  height: 2.2rem;
+  line-height: 2.2rem;
+  border-radius: 50%;
+  background: $accent-color;
+  color: $light-color;
+  text-align: center;
+  font-weight: 700;
+  font-size: 1.2rem;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+@include tablet {
+  .shopping-cart-link .content-shopping-cart .number {
+    min-width: 2rem;
+    height: 2rem;
+    line-height: 2rem;
+    font-size: 1.1rem;
+  }
 }
 
 .content-shopping-cart {
@@ -272,7 +338,7 @@
   box-shadow: 0 6px 20px rgba(255, 107, 53, 0.4);
 }
 
-// ============ Banner de Página Interna ============
+// Banner interno
 .banner-interno {
   background: linear-gradient(135deg, rgba(63, 47, 36, 0.85) 0%, rgba(210, 105, 30, 0.8) 100%);
   height: 30vh;
@@ -510,7 +576,7 @@
   padding-bottom: 1rem;
 }
 
-// Carrusel de galería
+// Carrusel de galería o galeria en carrusel de productos
 #galleryCarousel {
   border-radius: $border-radius;
   overflow: hidden;
@@ -744,7 +810,7 @@
   height: auto;
 }
 
-// ============ Media Queries Responsive ============
+// Las MQ o media queries responsive
 
 @include desktop {
   .container {
@@ -782,7 +848,7 @@
   .navbar-toggle {
     display: block;
   }
-  
+
   .menu {
     display: none;
     position: absolute;
@@ -796,28 +862,42 @@
     box-shadow: $box-shadow;
     border-radius: 0 0 $border-radius $border-radius;
   }
-  
+
   .menu.active {
     display: flex;
   }
-  
+
   .search-form {
     display: none;
   }
-  
+
   .customer-support,
   .content-shopping-cart {
     display: none;
   }
-  
+
   .hero {
-    justify-content: center;
-    gap: 2rem;
+    justify-content: space-between;
+    gap: 1rem;
   }
-  
+
+  /* En tablet queremos el logo a la izquierda y el toggle a la derecha */
   .container-logo {
-    flex-direction: column;
-    text-align: center;
+    flex-direction: row;
+    text-align: left;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  /* Ocultar el texto del logo en tablet: mostrar solo la imagen */
+  .container-logo h1 a {
+    display: none;
+  }
+
+  /* Aumentar logo en tablet y alinearlo a la izquierda */
+  .container-logo .logo-img {
+    max-height: 6.8rem;
   }
   
   .content-banner {
@@ -907,7 +987,23 @@
     gap: 2rem;
     padding-bottom: 1rem;
     scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
+  }
+
+  /* En móvil: logo más grande y alineado a la izquierda junto al toggle */
+  .container-logo {
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    text-align: left;
+    gap: 1rem;
+  }
+
+  .container-logo h1 a {
+    display: none;
+  }
+
+  .container-logo .logo-img {
+    max-height: 6.0rem;
   }
   
   .container-products .card-product {

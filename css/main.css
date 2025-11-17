@@ -1,3 +1,4 @@
+@charset "UTF-8";
 :root {
   --primary-color: #3f2f24;
   --secondary-color: #D2691E;
@@ -151,6 +152,25 @@ input:focus-visible {
   color: #FFFFFF;
 }
 
+/* Logo con respoinsive  */
+.container-logo .logo-img {
+  display: inline-block;
+  width: auto;
+  max-height: 6.4rem;
+  object-fit: contain;
+  vertical-align: middle;
+}
+
+@media (max-width: 768px) {
+  .container-logo .logo-img {
+    max-height: 5.6rem;
+  }
+}
+@media (max-width: 576px) {
+  .container-logo .logo-img {
+    max-height: 5rem;
+  }
+}
 .container-logo h1 a {
   text-decoration: none;
   color: #FFFFFF;
@@ -178,6 +198,49 @@ input:focus-visible {
   transform: scale(1.1);
 }
 
+.shopping-cart-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  position: relative;
+  color: #FFFFFF;
+  text-decoration: none;
+}
+
+.shopping-cart-link .content-shopping-cart {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.4rem;
+  margin: 0;
+}
+
+.shopping-cart-link .content-shopping-cart .text {
+  display: none;
+}
+
+.shopping-cart-link .content-shopping-cart .number {
+  display: inline-block;
+  min-width: 2.2rem;
+  height: 2.2rem;
+  line-height: 2.2rem;
+  border-radius: 50%;
+  background: #FF6B35;
+  color: #FFFFFF;
+  text-align: center;
+  font-weight: 700;
+  font-size: 1.2rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 768px) {
+  .shopping-cart-link .content-shopping-cart .number {
+    min-width: 2rem;
+    height: 2rem;
+    line-height: 2rem;
+    font-size: 1.1rem;
+  }
+}
 .content-shopping-cart {
   display: flex;
   flex-direction: column;
@@ -867,12 +930,24 @@ input:focus-visible {
     display: none;
   }
   .hero {
-    justify-content: center;
-    gap: 2rem;
+    justify-content: space-between;
+    gap: 1rem;
   }
+  /* En tablet queremos el logo a la izquierda y el toggle a la derecha */
   .container-logo {
-    flex-direction: column;
-    text-align: center;
+    flex-direction: row;
+    text-align: left;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1rem;
+  }
+  /* Ocultar el texto del logo en tablet: mostrar solo la imagen */
+  .container-logo h1 a {
+    display: none;
+  }
+  /* Aumentar logo en tablet y alinearlo a la izquierda */
+  .container-logo .logo-img {
+    max-height: 6.8rem;
   }
   .content-banner {
     text-align: center;
@@ -943,7 +1018,20 @@ input:focus-visible {
     gap: 2rem;
     padding-bottom: 1rem;
     scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
+  }
+  /* En móvil: logo más grande y alineado a la izquierda junto al toggle */
+  .container-logo {
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    text-align: left;
+    gap: 1rem;
+  }
+  .container-logo h1 a {
+    display: none;
+  }
+  .container-logo .logo-img {
+    max-height: 6rem;
   }
   .container-products .card-product {
     min-width: 280px;
@@ -1658,7 +1746,6 @@ input:focus-visible {
     font-size: 1.4rem;
   }
 }
-/* From Uiverse.io by M4rco592 - Gradient animated CTA */
 .gradient-button {
   position: relative;
   padding: 1.6rem 3.2rem;

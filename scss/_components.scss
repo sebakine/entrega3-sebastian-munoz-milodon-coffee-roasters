@@ -1,8 +1,8 @@
 @use 'variables' as *;
 @use 'mixins' as *;
-@use "sass:color"; // <-- AÑADE ESTA LÍNEA AL INICIO
+@use "sass:color"; 
 
-// ============ Componentes Reutilizables ============
+// Componentes Reutilizables 
 
 // Botones y enlaces con estilo
 .btn-read-more {
@@ -64,7 +64,7 @@
   }
 }
 
-// Tarjeta de producto
+// Tarjeta de producto o card product bla bla
 .card-product {
   background-color: $light-color;
   padding: 2rem;
@@ -119,7 +119,7 @@
   z-index: 2;
 }
 
-// FIX MEJORADO PARA HOVER DE VISTA RÁPIDA
+// Vista rapida o modal de producto quick view
 .card-product {
   position: relative;
   
@@ -451,9 +451,9 @@
   }
 }
 
-// ======================================
-// ESTILOS PARA OFFCANVAS DEL CARRITO
-// ======================================
+
+// ESTILOS PARA OFFCANVAS DEL CARRITO los estilos cuando la pestaña del carrito se abre
+
 
 #cartOffcanvas {
   width: 400px;
@@ -505,9 +505,9 @@
   }
 }
 
-// ======================================
-// ESTILOS PARA TOAST
-// ======================================
+
+// ESTILOS PARA TOAST o toasty de bootstrap
+
 
 .toast-container {
   z-index: 1090;
@@ -529,9 +529,8 @@
   font-weight: 500;
 }
 
-// ======================================
-// ESTILOS PARA BADGES PERSONALIZADOS
-// ======================================
+
+// estilos para el carrito badge
 
 .shopping-cart-link {
   position: relative;
@@ -574,9 +573,9 @@
   background-color: #17a2b8 !important;
 }
 
-// ================================
-// Sobre Nosotros / Equipo styles
-// ================================
+
+// Sobre Nosotros equipo e historia
+
 
 .sobre-nosotros {
   .datos-empresa {
@@ -682,10 +681,6 @@
   background: linear-gradient(135deg, $accent-color 0%, color.adjust($accent-color, $lightness: -6%) 100%);
 }
 
-// ================================
-// Uniform card sizes and text for values and team
-// ================================
-
 // Cards de valores (Nuestros Valores)
 .card-valor {
   display: flex;
@@ -693,7 +688,7 @@
   align-items: center;
   text-align: center;
   padding: 2rem;
-  min-height: 320px; // keep cards visually equal
+  min-height: 320px; 
   border-radius: $border-radius;
   background: $light-color;
   box-shadow: $box-shadow;
@@ -722,7 +717,7 @@
   align-items: center;
   text-align: center;
   padding: 1.8rem 1.4rem;
-  min-height: 360px; // equal height for uniform layout
+  min-height: 360px; 
   justify-content: flex-start;
 }
 
@@ -764,8 +759,7 @@
     font-size: 1.4rem;
   }
 }
-
-/* From Uiverse.io by M4rco592 - Gradient animated CTA */
+// Botón con efecto degradado animado animaciones que queria el profesor aunque no creo que la veaa util para el proyecto pero bueh
 .gradient-button {
   position: relative;
   padding: 1.6rem 3.2rem;
